@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IPFS APP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="index.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="margin-top:20%;display:flex;justify-content: center;align-items: center;flex-direction: column;">
+            <div>
+                <h2>IPFS APP!</h2>
+            </div>
+            <div class="jumbotron">
+
+                <div class="input-group" style="margin:20px;width:400px">
+                    <label>Enter Hash of file to download</label>
+                    <input type="text" id="hashofFile" class="form-control" placeholder="hash value..." aria-describedby="basic-addon1">
+                </div>
+                <div style="margin:20px">
+                    <button type="button" class="btn btn-primary" onclick="getFile()">Download File</button>
+                </div>
+                <br />
+                <h>Upload file</h>
+                <form ref='uploadForm' id='uploadForm' action='http://localhost:8000/file' method='post' encType="multipart/form-data">
+                    <input type="file" name="file" />
+                    <input type='submit' value='Upload!' />
+                </form>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
