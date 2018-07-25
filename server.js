@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname)));
 
 app.post("/file", (req, res) => {
+    console.log("uploading file");
     var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
 
     node.files.add({
@@ -41,6 +42,7 @@ app.post("/file", (req, res) => {
 
 app.get("/getFile/:hash", (req, res) => {
     console.log(req.params.hash);
+    console.log("downloading file");
     var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
 
     node.files.cat(req.params.hash, (err, data) => {
