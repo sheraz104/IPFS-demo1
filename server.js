@@ -64,8 +64,8 @@ app.get('/', function (req, res) {
 
 
 
-app.listen(process.env.PORT || 8000, () => {
-    console.log('server is running on 8000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('server is running on 3000');
 });
 
 
