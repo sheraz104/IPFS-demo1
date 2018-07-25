@@ -1,6 +1,5 @@
 var http = require('http');
 var fs = require("fs");
-var Web3 = require("web3");
 var express = require("express");
 var path = require("path");
 const IPFS = require('ipfs');
