@@ -1,4 +1,4 @@
-var http = require('http');
+var https = require('https')
 var fs = require("fs");
 var express = require("express");
 var path = require("path");
@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname)));
 
 app.post("/file", (req, res) => {
-    console.log("uploading file");
     var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
 
     node.files.add({
@@ -42,15 +41,11 @@ app.post("/file", (req, res) => {
 
 app.get("/getFile/:hash", (req, res) => {
     console.log(req.params.hash);
-    console.log("downloading file");
     var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
-    console.log("downloading file1");
 
     node.files.cat(req.params.hash, (err, data) => {
         if (err) { console.log(err) }
-        console.log("downloading file3");
 
-        console.log('\nFile content:')
         // print the file to the terminal and then exit the program
         // console.log(data.toString())
         fs.writeFile("file.txt", data.toString(), function (err) {
@@ -68,9 +63,10 @@ app.get('/', function (req, res) {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  }, app).listen(PORT, () => {
     console.log('server is running on ',PORT);
 });
 
-
-console.log(`Worker ${process.pid} started`);
