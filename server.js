@@ -44,9 +44,11 @@ app.get("/getFile/:hash", (req, res) => {
     console.log(req.params.hash);
     console.log("downloading file");
     var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
+    console.log("downloading file1");
 
     node.files.cat(req.params.hash, (err, data) => {
         if (err) { console.log(err) }
+        console.log("downloading file3");
 
         console.log('\nFile content:')
         // print the file to the terminal and then exit the program
